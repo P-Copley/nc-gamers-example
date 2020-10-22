@@ -1,1 +1,1 @@
-export const loggedInUserId = '1';
+export const loggedInUserId = 2;

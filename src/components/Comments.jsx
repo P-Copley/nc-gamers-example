@@ -5,12 +5,12 @@ class Comments extends Component {
   state = {
     comments: [
       { comment_id: 1, text: 'First!', authorId: 1 },
-      { comment_id: 2, text: 'Memes memes and more memes...', authorId: 1 },
+      { comment_id: 2, text: 'Memes memes and more memes...', authorId: 2 },
       {
         comment_id: 3,
         text:
           "Something really insightful and valuable that's been buried in the comments section, because who cares about that? More memes!",
-        authorId: 1,
+        authorId: 2,
       },
     ],
   };
