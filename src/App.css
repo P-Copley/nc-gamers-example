@@ -1,0 +1,53 @@
+body {
+  background: #dfe6ed;
+}
+
+.App {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.game-card {
+  border: 1px solid grey;
+  background: white;
+  border-radius: 5px;
+  padding: 2rem 4rem;
+  margin: 1rem 0;
+  box-shadow: 2px 2px 5px 0px rgba(128, 128, 128, 0.308);
+}
+
+.game-card:hover {
+  background: rgb(226, 226, 226);
+}
+
+.single-game-page {
+  background: white;
+  padding: 1rem 2rem;
+  margin: 1rem;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px 0px rgba(128, 128, 128, 0.308);
+}
+.error-display {
+  color: red;
+  font-weight: bold;
+  background: white;
+  border: 2px dashed red;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination-arrow {
+  background: none;
+  border: none;
+}
+
+.pagination-arrow:disabled {
+  color: darkgrey;
+}
