@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { Component } from 'react';
 import GameCard from './GameCard';
 import Loader from './Loader';
+import Pagination from './Pagination';
 
 class GameList extends Component {
   state = {
@@ -28,11 +29,11 @@ class GameList extends Component {
     const { genre_slug } = this.props;
     const { page } = this.state;
     axios
-      .get('https://northgamers.herokuapp.com/api/games', {
+      .get(`https://northgamers.herokuapp.com/api/games`, {
         params: { genre_slug, p: page },
       })
       .then(({ data: { games, total_count } }) => {
-        this.setState({ games, isLoading: false, total_count });
+        this.setState({ games, total_count, isLoading: false });
       });
   };
 
@@ -46,8 +47,8 @@ class GameList extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     const newPage = prevState.page !== this.state.page;
-    const newSlug = prevProps.genre_slug !== this.props.genre_slug;
-    if (newSlug || newPage) {
+    const newGenre = prevProps.genre_slug !== this.props.genre_slug;
+    if (newGenre || newPage) {
       this.fetchGames();
     }
   }
@@ -56,36 +57,19 @@ class GameList extends Component {
     const { games, isLoading, page, total_count } = this.state;
     const { genre_slug } = this.props;
     const listTitle = genre_slug || 'All';
-
-    console.log(page);
-    const pageCount = Math.ceil(total_count / 5);
-    const atStart = page === 1;
-    const atEnd = page === pageCount;
-
     if (isLoading) return <Loader />;
+
     return (
       <main>
         <h3>{listTitle} games</h3>
         {games.map((game) => {
           return <GameCard {...game} key={game.game_id} />;
         })}
-        <section className="pagination-container">
-          <button
-            disabled={atStart}
-            onClick={() => this.setPage(page - 1)}
-            className="pagination-arrow"
-          >
-            {'<'}
-          </button>
-          <p>{page}</p>
-          <button
-            onClick={() => this.setPage(page + 1)}
-            className="pagination-arrow"
-            disabled={atEnd}
-          >
-            {'>'}
-          </button>
-        </section>
+        <Pagination
+          total_count={total_count}
+          page={page}
+          setPage={this.setPage}
+        />
       </main>
     );
   }

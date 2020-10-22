@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import Loader from './Loader';
-import ErrorDisplay from './ErrorDisplay';
 import { getGameById } from '../api';
+import Comments from './Comments';
+import ErrorDisplay from './ErrorDisplay';
+import Loader from './Loader';
 import StarUpdater from './StarUpdater';
 
 class SingleGame extends Component {
@@ -32,7 +33,7 @@ class SingleGame extends Component {
     if (error) return <ErrorDisplay {...error} />;
     if (isLoading) return <Loader />;
     return (
-      <main className='single-game-page'>
+      <main className="single-game-page">
         <h2>{gameInfo.game_title}</h2>
         <p>{gameInfo.genre}</p>
         <p>
@@ -41,6 +42,7 @@ class SingleGame extends Component {
         <img src={gameInfo.image_url} alt={`${gameInfo.game_title} box art`} />
         <StarUpdater stars={gameInfo.stars} game_id={gameInfo.game_id} />
         <p>{gameInfo.number_of_reviews} reviews</p>
+        <Comments />
       </main>
     );
   }

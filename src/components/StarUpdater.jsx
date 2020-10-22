@@ -31,7 +31,11 @@ class StarUpdater extends React.Component {
           Vote UP
         </button>
         <p>Stars: {stars + usersVoteCount}</p>
-        <button onClick={() => this.handleVote(-1)} value={-1}>
+        <button
+          onClick={() => this.handleVote(-1)}
+          value={-1}
+          disabled={usersVoteCount === -1}
+        >
           Vote DOWN
         </button>
       </div>

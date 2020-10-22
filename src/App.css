@@ -29,6 +29,7 @@ body {
   border-radius: 5px;
   box-shadow: 2px 2px 5px 0px rgba(128, 128, 128, 0.308);
 }
+
 .error-display {
   color: red;
   font-weight: bold;
@@ -43,11 +44,12 @@ body {
   justify-content: center;
 }
 
-.pagination-arrow {
-  background: none;
-  border: none;
+.comments-list {
+  list-style-type: none;
+  padding: 0;
 }
 
-.pagination-arrow:disabled {
-  color: darkgrey;
+.comments-container {
+  border-bottom: 1px solid darkgrey;
+  padding: 1em;
 }
